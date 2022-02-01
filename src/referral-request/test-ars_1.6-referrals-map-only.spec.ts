@@ -173,7 +173,7 @@ describe('Mapping VON to referrals', () => {
         expect(outputFragment.entry[0].resource.id).toEqual('to-be-defined')
     })
     it('should meta.profile', () => {
-        expect(outputFragment.entry[0].meta.profile).toEqual('Tony')
+        expect(outputFragment.entry[0].resoruce.meta.profile).toEqual('Tony')
         //         '["https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-GPC-ReferralRequest-1"]'
         //     )
     })
