@@ -169,12 +169,47 @@ describe('Mapping VON to referrals', () => {
             'Referral'
         )
     })
-    it('should return patient ID to-be-defined', () => {
-        expect(outputFragment.entry[0].resource.id).toEqual('to-be-defined')
+    it('should return the unique ID of the referral entity_id, entity_ty', () => {
+        expect(outputFragment.entry[0].resource.id).toEqual(
+            'f30c82b0-7acb-4349-b36e-1b49ae643c7a'
+        )
     })
-    it('should meta.profile', () => {
-        expect(outputFragment.entry[0].resoruce.meta.profile).toEqual('Tony')
-        //         '["https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-GPC-ReferralRequest-1"]'
-        //     )
+    it('should return the meta.profile, HARDWIRED', () => {
+        expect(outputFragment.entry[0].resource.meta.profile).toEqual([
+            'https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-GPC-ReferralRequest-1',
+        ])
+    })
+    // Where do we get these IDs from
+    it('should return the patient identifiers, HARDWIRED', () => {
+        expect(outputFragment.entry[0].resource.identifier).toEqual([
+            {
+                system: 'https://fhir.nhs.uk/Id/cross-care-setting-identifier',
+                value: 'B154D1A3-D631-49BD-8B67-2F76D7D85865',
+            },
+            {
+                system: 'https://fhir.nhs.uk/Id/ubr-number',
+                value: 'bb2378b6-dde2-11e9-9d36-2a2ae2dbcce4',
+            },
+        ])
+    })
+    // Should we be checking for fields we don't support? and should it be null?
+    it('not have a value in the "basedOn field"', () => {
+        expect(outputFragment.entry[0].resource.basedOn).toBe('')
+    })
+    // Is this correct 'unknown'
+    it('should return a status code of unkown', () => {
+        expect(outputFragment.entry[0].resource.status).toEqual('unkown')
+    })
+    it('should return a intent code of order', () => {
+        expect(outputFragment.entry[0].resource.intent).toEqual('order')
+    })
+    it.todo('should return a priority based on a picklist')
+    it('should return an empty serviceRequested, as we do not support this field', () => {
+        expect(outputFragment.entry[0].resource.serviceRequested).toBe('')
+    })
+    it('should return the patients ID based on masterId', () => {
+        expect(outputFragment.entry[0].resource.subject).toEqual(
+            'to-be-defined'
+        )
     })
 })
