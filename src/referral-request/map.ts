@@ -28,6 +28,9 @@ export const map = (
         // resource Type
         resource.resourceType = 'Referral'
         resource.id = von.patient.uuid
+        resource.meta.profile = 'Tony'
+        //     '["https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-GPC-ReferralRequest-1"]'
+
         // Final output goes into the resource part
 
         output.entry.push(template)
