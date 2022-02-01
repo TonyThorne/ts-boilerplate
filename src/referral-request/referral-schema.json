@@ -1,0 +1,241 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "_metadata": {
+            "type": "object",
+            "properties": {
+                "entityName": {
+                    "type": "string"
+                },
+                "entityTypeId": {
+                    "type": "integer"
+                },
+                "careRecordGroup": {
+                    "type": "string"
+                },
+                "entityId": {
+                    "type": "string"
+                },
+                "globalSequence": {
+                    "type": "integer"
+                },
+                "auditApplication": {
+                    "type": "integer"
+                },
+                "auditDate": {
+                    "type": "string"
+                },
+                "audited": {
+                    "type": "boolean"
+                },
+                "auditFlag": {
+                    "type": "string"
+                },
+                "auditSequence": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "entityName",
+                "entityTypeId",
+                "careRecordGroup",
+                "entityId",
+                "globalSequence",
+                "auditApplication",
+                "auditDate",
+                "audited",
+                "auditFlag",
+                "auditSequence",
+                "uuid"
+            ]
+        },
+        "baseType": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code",
+                "text"
+            ]
+        },
+        "category": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code",
+                "text"
+            ]
+        },
+        "clinician": {
+            "type": "object",
+            "properties": {
+                "referenceType": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "referenceType",
+                "uuid"
+            ]
+        },
+        "consultation": {
+            "type": "object",
+            "properties": {
+                "referenceType": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "referenceType",
+                "uuid"
+            ]
+        },
+        "referralDepartment": {
+            "type": "object",
+            "properties": {
+                "referenceType": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "referenceType",
+                "uuid"
+            ]
+        },
+        "eventDate": {
+            "type": "string"
+        },
+        "inactive": {
+            "type": "boolean"
+        },
+        "inPractice": {
+            "type": "boolean"
+        },
+        "iosClaim": {
+            "type": "boolean"
+        },
+        "masterId": {
+            "type": "string"
+        },
+        "inputOperator": {
+            "type": "string"
+        },
+        "organisation": {
+            "type": "object",
+            "properties": {
+                "referenceType": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "referenceType",
+                "uuid"
+            ]
+        },
+        "personReference": {
+            "type": "object",
+            "properties": {
+                "referenceType": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "referenceType",
+                "uuid"
+            ]
+        },
+        "private": {
+            "type": "boolean"
+        },
+        "readCode": {
+            "type": "string"
+        },
+        "authoriser": {
+            "type": "object",
+            "properties": {
+                "referenceType": {
+                    "type": "string"
+                },
+                "uuid": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "referenceType",
+                "uuid"
+            ]
+        },
+        "snomedConceptId": {
+            "type": "integer"
+        },
+        "sctMapIsAssured": {
+            "type": "boolean"
+        },
+        "sctMapIsIndicative": {
+            "type": "boolean"
+        },
+        "sctMapType": {
+            "type": "integer"
+        },
+        "sctMapVersion": {
+            "type": "integer"
+        },
+        "term": {
+            "type": "string"
+        },
+        "freeText": {
+            "type": "string"
+        },
+        "topic": {
+            "type": "integer"
+        },
+        "urgency": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "code",
+                "text"
+            ]
+        }
+    },
+    "required": []
+}
