@@ -64,7 +64,7 @@ beforeAll(async () => {
                 registeredPractice: 'uuid of Practice',
             },
             clinicalHistory: {
-                'f30c82b0-7acb-4349-b36e-1b49ae643c7a': {
+                '1fe395ad-c2df-426e-bb74-571659533801': {
                     _metadata: {
                         entityName: 'referral',
                         entityTypeId: 59,
@@ -171,7 +171,7 @@ describe('Mapping VON to referrals', () => {
     })
     it('should return the unique ID of the referral entity_id, entity_ty', () => {
         expect(outputFragment.entry[0].resource.id).toEqual(
-            'f30c82b0-7acb-4349-b36e-1b49ae643c7a'
+            '1fe395ad-c2df-426e-bb74-571659533801'
         )
     })
     it('should return the meta.profile, HARDWIRED', () => {

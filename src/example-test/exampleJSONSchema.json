@@ -1,0 +1,153 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+        "forename": {
+            "type": "string"
+        },
+        "surename": {
+            "type": "string"
+        },
+        "age": {
+            "type": "integer"
+        },
+        "addresses": {
+            "type": "array",
+            "items": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "a1": {
+                            "type": "string"
+                        },
+                        "a2": {
+                            "type": "string"
+                        },
+                        "a3": {
+                            "type": "string"
+                        },
+                        "postcode": {
+                            "type": "string"
+                        },
+                        "perminant": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "a1",
+                        "a2",
+                        "a3",
+                        "postcode",
+                        "perminant"
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "a1": {
+                            "type": "string"
+                        },
+                        "a2": {
+                            "type": "string"
+                        },
+                        "a3": {
+                            "type": "string"
+                        },
+                        "postcode": {
+                            "type": "string"
+                        },
+                        "perminant": {
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "a1",
+                        "a2",
+                        "a3",
+                        "postcode",
+                        "perminant"
+                    ]
+                }
+            ]
+        },
+        "activeCustomer": {
+            "type": "boolean"
+        },
+        "dateJoined": {
+            "type": "string"
+        },
+        "ab169577-44a1-4842-b346-ba3761a3958b": {
+            "type": "object",
+            "properties": {
+                "orderID": {
+                    "type": "string"
+                },
+                "product": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "orderedOn": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "orderID",
+                "product",
+                "price",
+                "orderedOn"
+            ]
+        },
+        "430629c9-4e66-4629-806c-55e903978294": {
+            "type": "object",
+            "properties": {
+                "orderID": {
+                    "type": "string"
+                },
+                "product": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "orderedOn": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "orderID",
+                "product",
+                "price",
+                "orderedOn"
+            ]
+        },
+        "marketingPreferences": {
+            "type": "null"
+        },
+        "marketingCampain": {
+            "type": "string"
+        },
+        "customerType": {
+            "enum": [
+                "Big spender",
+                "Casual Spender",
+                "Penny Pincher"
+            ],
+            "type": "string"
+        }
+    },
+    "required": [
+        "forename",
+        "surename",
+        "age",
+        "addresses",
+        "activeCustomer",
+        "dateJoined",
+        "ab169577-44a1-4842-b346-ba3761a3958b",
+        "430629c9-4e66-4629-806c-55e903978294",
+        "marketingPreferences",
+        "marketingCampain",
+        "customerType"
+    ]
+}
