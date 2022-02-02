@@ -18,7 +18,7 @@ export const map = (
     if (!(item._metadata.entityTypeId === 59)) {
         return false
     }
-    console.log('Referral', item._metadata.entityId)
+    // console.log('Referral', item._metadata.entityId)
     try {
         const template: any = {}
         template.resource = {}
@@ -50,6 +50,7 @@ export const map = (
         resource.priority = ''
         resource.serviceRequested = ''
         resource.subject = von.patient.uuid
+
         // Final output goes into the resource part
 
         output.entry.push(template)
