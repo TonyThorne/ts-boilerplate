@@ -19,7 +19,7 @@
         "forceConsistentCasingInFileNames": false,
         "noFallthroughCasesInSwitch": false,
         "resolveJsonModule": true,
-        "moduleResolution": "node",
-        "allowJs": true
+        "allowJs": true,
+        "esModuleInterop": true
     }
 }

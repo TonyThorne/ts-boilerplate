@@ -1,0 +1,44 @@
+{
+    "forename": "John",
+    "surname": "Doe",
+    "age": 32,
+    "addresses": [
+        {
+            "a1": "22 The High Street",
+            "a2": "Some Town",
+            "a3": "Somewhere",
+            "postcode": "ABC 1234",
+            "perminant": true
+        },
+        {
+            "a1": "Holiday Home",
+            "a2": "Another Twon",
+            "a3": "Somewhere",
+            "postcode": "ZZX 9ER",
+            "perminant": false
+        }
+    ],
+    "activeCustomer": true,
+    "dateJoined": "2021-10-05T14:48:00.000Z",
+    "orders": [
+        {
+            "ab169577-44a1-4842-b346-ba3761a3958b": {
+                "orderID": "70fd0c47-1175-4c0f-b628-94a44fef31b9",
+                "product": "Lipstick",
+                "price": 1.88,
+                "orderedOn": "2022-01-05T14:48:00.022Z"
+            }
+        },
+        {
+            "430629c9-4e66-4629-806c-55e903978294": {
+                "orderID": "c5e31924-a487-4882-9629-d2e135bc756c",
+                "product": "Blusher",
+                "price": 6.99,
+                "orderedOn": "2022-01-05T14:48:00.022Z"
+            }
+        }
+    ],
+    "marketingPreferences": null,
+    "marketingCampain": "undefined",
+    "customerType": "Big Spender"
+}

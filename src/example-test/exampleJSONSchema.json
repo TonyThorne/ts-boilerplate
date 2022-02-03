@@ -1,0 +1,126 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generated schema for Root",
+    "type": "object",
+    "properties": {
+        "forename": {
+            "type": "string"
+        },
+        "surname": {
+            "type": "string"
+        },
+        "age": {
+            "type": "number"
+        },
+        "addresses": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "a1": {
+                        "type": "string"
+                    },
+                    "a2": {
+                        "type": "string"
+                    },
+                    "a3": {
+                        "type": "string"
+                    },
+                    "postcode": {
+                        "type": "string"
+                    },
+                    "perminant": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "a1",
+                    "a2",
+                    "a3",
+                    "postcode",
+                    "perminant"
+                ]
+            }
+        },
+        "activeCustomer": {
+            "type": "boolean"
+        },
+        "dateJoined": {
+            "type": "string"
+        },
+        "orders": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "ab169577-44a1-4842-b346-ba3761a3958b": {
+                        "type": "object",
+                        "properties": {
+                            "orderID": {
+                                "type": "string"
+                            },
+                            "product": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number"
+                            },
+                            "orderedOn": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "orderID",
+                            "product",
+                            "price",
+                            "orderedOn"
+                        ]
+                    },
+                    "430629c9-4e66-4629-806c-55e903978294": {
+                        "type": "object",
+                        "properties": {
+                            "orderID": {
+                                "type": "string"
+                            },
+                            "product": {
+                                "type": "string"
+                            },
+                            "price": {
+                                "type": "number"
+                            },
+                            "orderedOn": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "orderID",
+                            "product",
+                            "price",
+                            "orderedOn"
+                        ]
+                    }
+                },
+                "required": []
+            }
+        },
+        "marketingPreferences": {},
+        "marketingCampain": {
+            "type": "string"
+        },
+        "customerType": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "forename",
+        "surename",
+        "age",
+        "addresses",
+        "activeCustomer",
+        "dateJoined",
+        "orders",
+        "marketingPreferences",
+        "marketingCampain",
+        "customerType"
+    ]
+}
