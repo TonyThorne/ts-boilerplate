@@ -1,241 +1,199 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "https://vision-schema.co.uk/typeReferral",
+    "description": "Source of ResourceTypes: https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-GPC-ReferralRequest-1",
     "type": "object",
     "properties": {
-        "_metadata": {
+        "resourceType": {
+            "description": "Source:",
+            "type": "string",
+            "pattern": "^.+$",
+            "enum": [
+                "ReferralRequest"
+            ]
+        },
+        "id": {
+            "type": "string",
+            "format": "uuid"
+        },
+        "meta": {
             "type": "object",
             "properties": {
-                "entityName": {
-                    "type": "string"
-                },
-                "entityTypeId": {
-                    "type": "integer"
-                },
-                "careRecordGroup": {
-                    "type": "string"
-                },
-                "entityId": {
-                    "type": "string"
-                },
-                "globalSequence": {
-                    "type": "integer"
-                },
-                "auditApplication": {
-                    "type": "integer"
-                },
-                "auditDate": {
-                    "type": "string"
-                },
-                "audited": {
-                    "type": "boolean"
-                },
-                "auditFlag": {
-                    "type": "string"
-                },
-                "auditSequence": {
-                    "type": "string"
-                },
-                "uuid": {
-                    "type": "string"
+                "profile": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                        "description": "Fixed value as per spec",
+                        "type": "string",
+                        "format": "uri",
+                        "const": "https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-GPC-ReferralRequest-1"
+                    }
                 }
             },
             "required": [
-                "entityName",
-                "entityTypeId",
-                "careRecordGroup",
-                "entityId",
-                "globalSequence",
-                "auditApplication",
-                "auditDate",
-                "audited",
-                "auditFlag",
-                "auditSequence",
-                "uuid"
+                "profile"
+            ],
+            "additionalProperties": false
+        },
+        "identifier": {
+            "type": "array",
+            "description": "A Business identifier (system = 'https://visionhealth.co.uk/identifier') will always be provided = GUID generated for this item. For referrals sent via eRS, the UBRN will be provided as a second identifier when available.",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "system": {
+                        "type": "string",
+                        "format": "uri",
+                        "enum": [
+                            "https://visionhealth.co.uk/identifier",
+                            "https://fhir.nhs.uk/Id/ubr-number"
+                        ]
+                    },
+                    "value": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "required": [
+                    "system",
+                    "value"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "basedOn": {
+            "type": "object",
+            "description": "Not Supported by Vision"
+        },
+        "status": {
+            "type": "string",
+            "description": "Fixed value as per spec",
+            "const": "unknown"
+        },
+        "intent": {
+            "type": "string",
+            "description": "Fixed value as per spec",
+            "const": "order"
+        },
+        "priority": {
+            "type": "string",
+            "description": "Mapping being Queried with NHS-D",
+            "enum": [
+                "asap",
+                "routine",
+                "urgent"
             ]
         },
-        "baseType": {
+        "serviceRequested": {
+            "type": "object",
+            "description": "Not Supported by Vision"
+        },
+        "subject": {
             "type": "object",
             "properties": {
-                "code": {
-                    "type": "string"
-                },
-                "text": {
-                    "type": "string"
+                "reference": {
+                    "type": "string",
+                    "pattern": "^(Patient).+$"
                 }
-            },
-            "required": [
-                "code",
-                "text"
-            ]
+            }
         },
-        "category": {
+        "context": {
             "type": "object",
             "properties": {
-                "code": {
-                    "type": "string"
-                },
-                "text": {
-                    "type": "string"
+                "reference": {
+                    "type": "string",
+                    "pattern": "^(Encounter).+$"
                 }
-            },
-            "required": [
-                "code",
-                "text"
-            ]
+            }
         },
-        "clinician": {
+        "authoredOn": {
+            "type": "string",
+            "description": "Only the date part will be populated (without time zone).",
+            "pattern": "-?[0-9]{4}(-(0[1-9]|1[0-2])(-(0[0-9]|[1-2][0-9]|3[0-1]))?)?"
+        },
+        "requester": {
             "type": "object",
+            "description": "Only populated if 'source' is 'GP Referral' (SOU001) and If a clinician is available",
             "properties": {
-                "referenceType": {
-                    "type": "string"
+                "agent": {
+                    "type": "object",
+                    "properties": {
+                        "reference": {
+                            "type": "string",
+                            "pattern": "^(Practitioner).+$"
+                        }
+                    }
                 },
-                "uuid": {
-                    "type": "string"
+                "onBehalfOf": {
+                    "type": "object",
+                    "description": "Not Supported by Vision - GPs only refer the patient on their own recommendation and for their own practice so there will never be another Organisation to refer to for this field."
                 }
-            },
-            "required": [
-                "referenceType",
-                "uuid"
-            ]
+            }
         },
-        "consultation": {
+        "speciality": {
             "type": "object",
-            "properties": {
-                "referenceType": {
-                    "type": "string"
-                },
-                "uuid": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "referenceType",
-                "uuid"
-            ]
+            "description": "Not Supported by Vision"
         },
-        "referralDepartment": {
+        "recipient": {
+            "type": "array",
+            "description": "One entry in the array per populated field - person_ref, organisa, departmnt",
+            "minItems": 1,
+            "maxItems": 3,
+            "properties": {
+                "reference": {
+                    "type": "string",
+                    "pattern": "^(Practitioner|Organisation|Department).+$"
+                }
+            }
+        },
+        "reasonCode": {
             "type": "object",
-            "properties": {
-                "referenceType": {
-                    "type": "string"
-                },
-                "uuid": {
-                    "type": "string"
+            "oneOf": [
+                {
+                    "$ref": "/codeableConcept"
                 }
-            },
-            "required": [
-                "referenceType",
-                "uuid"
             ]
         },
-        "eventDate": {
+        "description": {
             "type": "string"
         },
-        "inactive": {
-            "type": "boolean"
-        },
-        "inPractice": {
-            "type": "boolean"
-        },
-        "iosClaim": {
-            "type": "boolean"
-        },
-        "masterId": {
-            "type": "string"
-        },
-        "inputOperator": {
-            "type": "string"
-        },
-        "organisation": {
+        "supportingInfo": {
             "type": "object",
+            "description": "Reference to the linked letter (Document) if any. 'Document/535-{letter record Id}'  The linkage details are stored with the letter rather than the referral record.",
             "properties": {
-                "referenceType": {
-                    "type": "string"
-                },
-                "uuid": {
-                    "type": "string"
+                "reference": {
+                    "type": "string",
+                    "pattern": "^(Document).+$"
                 }
-            },
-            "required": [
-                "referenceType",
-                "uuid"
-            ]
+            }
         },
-        "personReference": {
-            "type": "object",
-            "properties": {
-                "referenceType": {
-                    "type": "string"
-                },
-                "uuid": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "referenceType",
-                "uuid"
-            ]
-        },
-        "private": {
-            "type": "boolean"
-        },
-        "readCode": {
-            "type": "string"
-        },
-        "authoriser": {
-            "type": "object",
-            "properties": {
-                "referenceType": {
-                    "type": "string"
-                },
-                "uuid": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "referenceType",
-                "uuid"
-            ]
-        },
-        "snomedConceptId": {
-            "type": "integer"
-        },
-        "sctMapIsAssured": {
-            "type": "boolean"
-        },
-        "sctMapIsIndicative": {
-            "type": "boolean"
-        },
-        "sctMapType": {
-            "type": "integer"
-        },
-        "sctMapVersion": {
-            "type": "integer"
-        },
-        "term": {
-            "type": "string"
-        },
-        "freeText": {
-            "type": "string"
-        },
-        "topic": {
-            "type": "integer"
-        },
-        "urgency": {
-            "type": "object",
-            "properties": {
-                "code": {
-                    "type": "string"
-                },
-                "text": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "code",
-                "text"
-            ]
+        "note": {
+            "type": "array",
+            "description": "Agreed to populate this with fields from referral frontend fields that are not covered in above fields - 1 'text' entry per field.  Formatted as {Field description}: {value} . For picklists, the textual description will be used as the value rather than the code",
+            "minItems": 1,
+            "items": {
+                "text": "string"
+            }
         }
     },
-    "required": []
+    "required": [
+        "resourceType",
+        "id",
+        "meta",
+        "identifier",
+        "status",
+        "intent",
+        "priority",
+        "subject",
+        "context",
+        "authoredOn",
+        "recipient",
+        "reasonCode",
+        "description",
+        "supportingInfo",
+        "note"
+    ],
+    "additionalProperties": false
 }

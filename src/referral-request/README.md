@@ -3,6 +3,8 @@
 -   [Mapping file on confluence](https://inpsjira.atlassian.net/wiki/download/attachments/3170172955/GPC_FullStructured_Referral_Mapping.xlsx?api=v2)
 -   [GPC web site details](https://developer.nhs.uk/apis/gpconnect-1-6-0/accessrecord_structured_development_referralrequest_guidance.html#what-is-an-outbound-referral)
 
+-   [VON field mapping](https://inpsjira.atlassian.net/wiki/spaces/GC/pages/3573383448/Naming+conventions+for+JSON+attributes+VON)
+
 ---
 
 -   Spent .5 hour trying to work out what it is doing and how. Getting a lot of

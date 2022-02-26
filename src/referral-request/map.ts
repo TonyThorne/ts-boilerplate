@@ -27,7 +27,7 @@ export const map = (
 
         // resource Type
         resource.resourceType = 'Referral'
-        resource.id = Object.keys(von.clinicalHistory)[0]
+        resource.id = item._metadata.uuid
         resource.meta = {}
         resource.meta.profile = []
         resource.meta.profile.push(
@@ -36,20 +36,71 @@ export const map = (
         resource.identifier = []
         resource.identifier.push(
             {
-                system: 'https://fhir.nhs.uk/Id/cross-care-setting-identifier',
+                system: 'https://visionhealth.co.uk/identifier',
                 value: 'B154D1A3-D631-49BD-8B67-2F76D7D85865',
             },
             {
                 system: 'https://fhir.nhs.uk/Id/ubr-number',
-                value: 'bb2378b6-dde2-11e9-9d36-2a2ae2dbcce4',
+                value: item?.ubrn,
             }
         )
-        resource.basedOn = ''
-        resource.status = 'unkown'
+        // basedON is not supported by Vision and optional, so not included
+        // resource.basedOn = ''
+        resource.status = 'unknown'
         resource.intent = 'order'
-        resource.priority = ''
-        resource.serviceRequested = ''
-        resource.subject = von.patient.uuid
+        // ToDo create a function to test each one
+        if (item.urgency.code === 'URG001') {
+            resource.priority = 'asap'
+        } else if (item.urgency.code === 'URG002') {
+            resource.priority = 'routine'
+        } else if (item.urgency.code === 'URG003') {
+            resource.priority = 'urgent'
+        } else if (item.urgency.code === 'URG004') {
+            resource.priority = 'urgent'
+        } else if (item.urgency.code === 'URG005') {
+            resource.priority = 'urgent'
+        } else if (item.urgency.code === 'URG006') {
+            resource.priority = 'urgent'
+        } else {
+            resource.priority = 'not known'
+        }
+        // serviceRequested is not supported and optional, this should not be in the payload
+        // resource.serviceRequested = ''
+        resource.subject = {
+            reference: `Patient/${von.patient.identifiers.nhs}`,
+        }
+        resource.context = {}
+        resource.context.reference = item.consultation.uuid
+        resource.authoredOn = item.eventDate
+        // Only populated if "source" is "GP Referral" (SOU001) and If a clinician is available
+        if (item.source.code === 'SOU001') {
+            resource.requester = {}
+            resource.requester.agent = {}
+            resource.requester.agent.reference = item.clinician.uuid
+        }
+
+        // requester.onBehalfOf
+        // This MUST be populated if the requester.agent is a practitioner and the
+        // Organization associated with the referenced Practitioner is not the GP
+        // practice responsible for the referral.
+        // This element SHOULD be absent if the requester.agent is not a practitioner
+        // ** Not supported. **
+        // GPs only refer the patient on their own recommendation and for their own practice so there will never be another Organisation to refer to for this field.
+        // resource.requester.onBehalfOf = ''
+        resource.specialty = ''
+        resource.recipient = []
+        resource.recipient.push(
+            { reference: `Practitioner/${item.personReference.uuid}` },
+            { reference: `Organization/${item.organisation.uuid}` },
+            { reference: `Department/${item.referralDepartment.uuid}` }
+        )
+        // // reasonCode - codable item, waiting on utility function
+        // resource.description = item.freeText
+        // resource.supportingInfo = {
+        //     reference: `Document/${item.document.code}`,
+        // }
+
+        // console.log(resource.recipient)
 
         // Final output goes into the resource part
 
