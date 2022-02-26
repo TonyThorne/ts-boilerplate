@@ -1,5 +1,10 @@
 import { VON, json } from '../../dto/von.dto'
-
+import {
+    CodeableConcept,
+    Coding,
+    VonCodedItem,
+} from '../referral-request/types'
+import { codedOutput } from './utilityFn'
 // Each new allergy must be added to a list of allergies
 // If this is the first one, the list must be created
 // If this is NOT the first one, the list is simply appended
@@ -94,11 +99,23 @@ export const map = (
             { reference: `Organization/${item.organisation.uuid}` },
             { reference: `Department/${item.referralDepartment.uuid}` }
         )
-        // // reasonCode - codable item, waiting on utility function
-        // resource.description = item.freeText
-        // resource.supportingInfo = {
-        //     reference: `Document/${item.document.code}`,
-        // }
+        // reasonCode - codable item, waiting on utility function
+        const vonInput = {
+            readCode: item.readCode,
+            snomedConceptId: item.snomedConceptId,
+            sctMapIsAssured: item.sctMapIsAssured,
+            sctMapIsIndicative: item.sctMapIsIndicative,
+            sctMapType: item.sctMapType,
+            sctMapVersion: item.sctMapVersion,
+            term: item.term,
+        }
+
+        resource.reasonCode = codedOutput(vonInput)
+
+        resource.description = item.freeText
+        resource.supportingInfo = {
+            reference: `Document/${item.document.code}`,
+        }
 
         // console.log(resource.recipient)
 

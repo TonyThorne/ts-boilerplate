@@ -4,6 +4,8 @@ import { VON } from '../../dto/von.dto'
 import * as testModule from './map'
 import * as schema from './referral-schema.json'
 import { von } from '../example-test/patientSamanthaTransfer'
+import { VonCodedItem } from '../referral-request/types'
+import { codedOutput } from './utilityFn'
 
 // Set the consultion id
 const consultId = '19024021-a8d9-47ae-8021-add3527cd89c'
@@ -28,60 +30,37 @@ beforeAll(async () => {
 })
 
 describe('Utility functions', () => {
-    it.todo(
-        'Should return a CodeableConcept structure from any coded concept',
-        () => {
-            /* 
-        Examples of a CodeableConcept include:
+    it('Should return a CodeableConcept structure from any coded concept', () => {
+        const exampleCodedInput: VonCodedItem = {
+            readCode: '168..00',
+            snomedConceptId: 267031002,
+            sctMapIsAssured: true,
+            sctMapIsIndicative: false,
+            sctMapType: 4,
+            sctMapVersion: 20130925,
+            term: 'Tiredness symptom',
+        }
 
-        The code for a problem (called a condition in FHIR)
-            The medication code in a prescription
-            The patients gender
-            Symptoms observed during an adverse reaction
-            ...
-        It is actually a combination datatype:
-            a text property of type string
-            0 or more coding properties of type coding
-        Code Type
-            {
-                "system" : "<uri>", // Identity of the terminology system
-                "version" : "<string>", // Version of the system - if relevant
-                "code" : "<code>", // Symbol in syntax defined by the system
-                "display" : "<string>", // Representation defined by the system
-                "userSelected" : <boolean> // If this coding was chosen directly by the user
-            }
-        Example lab test result
-        "valueCodeableConcept": {
-            "coding": [
+        // console.log(codedOutput(exampleCodedInput))
+
+        const expectedCodedOutput = {
+            coding: [
                 {
-                    "system": "http://snomed.info/sct",
-                    "code": "260385009",
-                    "display": "Negative"
-                }, {
-                    "system": "https://acme.lab/resultcodes",
-                    "code": "NEG",
-                    "display": "Negative"
-                }
+                    system: 'http://snomed.info/sct',
+                    code: '267031002',
+                    display: 'Tiredness symptom',
+                },
+                {
+                    system: 'http://read.info/readv2',
+                    code: '168..00',
+                    display: 'Tiredness symptom',
+                },
             ],
-            "text": "Negative for Chlamydia Trachomatis rRNA"
+            text: 'Tiredness symptom',
         }
-        I DON'T LIKE THE ABOVE EXAMPLE AS THE TEXT, ENTERED BY THE USER, HAS LITTLE TO-DO WITH THE CODE
-        THIS WAS TAKEN FROM THE FHIR WEB SITE
 
-        The codeableConcept is far more flexible than coding
-        {
-            "coding" : [{ Coding }], // Code defined by a terminology system
-            "text" : "<string>" // Plain text representation of the concept
-        }
-        
-            */
-            /*
-           QUESTIONS about codeable concept
-           1. Why don't we include the terminology version?
-           2. 
-           */
-        }
-    )
+        expect(codedOutput(exampleCodedInput)).toEqual(expectedCodedOutput)
+    })
     it.todo('Should return ubrn number based on what passed in')
     it.todo('Run the mapping function')
 })
@@ -190,13 +169,31 @@ describe('Mapping VON to referrals', () => {
             { reference: 'Department/127' },
         ])
     })
-    // it.todo('should return reasonCode, sct_code & read_code')
+    it('should return reasonCode, sct_code & read_code', () => {
+        const expectedOutput = {
+            coding: [
+                {
+                    system: 'http://snomed.info/sct',
+                    code: '267031002',
+                    display: 'Tiredness symptom',
+                },
+                {
+                    system: 'http://read.info/readv2',
+                    code: '168..00',
+                    display: 'Tiredness symptom',
+                },
+            ],
+            text: 'Tiredness symptom',
+        }
 
-    // it('should return a description (text in Vision)', () => {
-    //     expect(outputFragment.entry[0].resource.description).toEqual(
-    //         'Outpatient, This is the referral and following text which wraps a bit'
-    //     )
-    // })
+        expect(basePath.reasonCode).toEqual(expectedOutput)
+    })
+
+    it('should return a description (text in Vision)', () => {
+        expect(outputFragment.entry[0].resource.description).toEqual(
+            'Outpatient, This is the referral and following text which wraps a bit'
+        )
+    })
     // it('should return supporting info (the document reference', () => {
     //     expect(outputFragment.entry[0].resource.supportingInfo).toEqual({
     //         reference: 'Document/535-39',
