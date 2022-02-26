@@ -88,12 +88,6 @@ describe('Mapping VON to referrals', () => {
     it('should return the referral ubrn', () => {
         ubrnNumber = 'A made up UBRN number'
         const t = ubrnFn(ubrnNumber)
-
-        // const t = { ...von, ubrn: 'Tony' }
-        // console.log(
-        //     't',
-        //     t.clinicalHistory['19024021-a8d9-47ae-8021-add3527cd89c'].ubrn
-        // )
         expect(outputFragment.entry[0].resource.identifier).toEqual([
             {
                 system: 'https://visionhealth.co.uk/identifier',
@@ -105,6 +99,35 @@ describe('Mapping VON to referrals', () => {
             },
         ])
     })
+    it('should return the referral a different ubrn', () => {
+        ubrnNumber = '123456-78910'
+        const t = ubrnFn(ubrnNumber)
+        expect(outputFragment.entry[0].resource.identifier).toEqual([
+            {
+                system: 'https://visionhealth.co.uk/identifier',
+                value: 'B154D1A3-D631-49BD-8B67-2F76D7D85865',
+            },
+            {
+                system: 'https://fhir.nhs.uk/Id/ubr-number',
+                value: '123456-78910',
+            },
+        ])
+    })
+    it('should no ubrn number', () => {
+        ubrnNumber = ''
+        const t = ubrnFn(ubrnNumber)
+        expect(outputFragment.entry[0].resource.identifier).toEqual([
+            {
+                system: 'https://visionhealth.co.uk/identifier',
+                value: 'B154D1A3-D631-49BD-8B67-2F76D7D85865',
+            },
+            {
+                system: 'https://fhir.nhs.uk/Id/ubr-number',
+                value: '',
+            },
+        ])
+    })
+
     // Optional fields that we don't support should not be in the output
     it('not have a reference to the "basedOn field"', () => {
         expect(basePath).not.toHaveProperty('basedOn')
@@ -163,7 +186,7 @@ describe('Mapping VON to referrals', () => {
         expect(outputFragment.entry[0].resource.specialty).toEqual('')
     })
     it('should return an array or objects with the person, organisation and department', () => {
-        expect(outputFragment.entry[0].resource.recipient).toEqual([
+        expect(basePath.recipient).toEqual([
             { reference: 'Practitioner/207' },
             { reference: 'Organization/128' },
             { reference: 'Department/127' },
@@ -190,41 +213,41 @@ describe('Mapping VON to referrals', () => {
     })
 
     it('should return a description (text in Vision)', () => {
-        expect(outputFragment.entry[0].resource.description).toEqual(
+        expect(basePath.description).toEqual(
             'Outpatient, This is the referral and following text which wraps a bit'
         )
     })
-    // it('should return supporting info (the document reference', () => {
-    //     expect(outputFragment.entry[0].resource.supportingInfo).toEqual({
-    //         reference: 'Document/535-39',
-    //     })
-    // })
-    // it.todo('should return a note, which includes Vision fields not in the above spec', () => {
-    //     expect(outputFragment.entry[0].resource.note).toEqual([
-    //         {
-    //             "text":"Source:GP Referral"
-    //          },
-    //          {
-    //             "text":"Referral Type:Out Patient"
-    //          },
-    //          {
-    //             "text":"Attendance Type:First Visit"
-    //          },
-    //          {
-    //             "text":"Contract Status:GP Fund Holding Contract"
-    //          },
-    //          {
-    //             "text":"Status:Referred"
-    //          },
-    //          {
-    //             "text":"NHS Speciality:ENT"
-    //          },
-    //          {
-    //             "text":" TP Speciality:Ear,Nose and Throat"
-    //          },
-    //          {
-    //             "text":"actiondate:20200523"
-    //          }
-    //     ])
-    // })
+    it('should return supporting info (the document reference', () => {
+        expect(basePath.supportingInfo).toEqual({
+            reference: 'Document/535-39',
+        })
+    })
+    it('should return a note, which includes Vision fields not in the above spec', () => {
+        expect(basePath.note).toEqual([
+            {
+                text: 'Source:GP Referral',
+            },
+            {
+                text: 'Referral Type:Day Case',
+            },
+            {
+                text: 'Attendance Type:Subsequent visit',
+            },
+            {
+                text: 'Contract Status:Extra contractural referral',
+            },
+            {
+                text: 'Status:Subsequent visit',
+            },
+            {
+                text: 'NHS Speciality:General Surgery',
+            },
+            {
+                text: ' TP Speciality:General Surgical',
+            },
+            {
+                text: 'actiondate:2006-05-17',
+            },
+        ])
+    })
 })

@@ -116,11 +116,35 @@ export const map = (
         resource.supportingInfo = {
             reference: `Document/${item.document.code}`,
         }
-
-        // console.log(resource.recipient)
+        // Vision fields: source, inpatient,nhsspec,fhsaspec, contract, attendance, status, actiondate
+        resource.note = [
+            {
+                text: `Source:${item.source.text}`,
+            },
+            {
+                text: `Referral Type:${item.referralType.text}`,
+            },
+            {
+                text: `Attendance Type:${item.attendance.text}`,
+            },
+            {
+                text: `Contract Status:${item.contract.text}`,
+            },
+            {
+                text: `Status:${item.attendance.text}`,
+            },
+            {
+                text: `NHS Speciality:${item.nhsSpecialties.text}`,
+            },
+            {
+                text: ` TP Speciality:${item.fhsaSpecialties.text}`,
+            },
+            {
+                text: `actiondate:${item.dateActionToBeTaken}`,
+            },
+        ]
 
         // Final output goes into the resource part
-
         output.entry.push(template)
 
         return true

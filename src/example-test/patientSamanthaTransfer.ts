@@ -192,6 +192,9 @@ export const von = {
                 code: '535-39',
                 text: 'some word file.docx',
             },
+            // freeText added by Tony, based on the VON definition on confluence
+            freeText:
+                'Outpatient, This is the referral and following text which wraps a bit',
         },
     },
     references: {},
