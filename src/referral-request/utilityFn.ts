@@ -55,12 +55,12 @@ export const codedOutput = (obj: VonCodedItem): CodeableConcept => {
         coding: [
             {
                 system: 'http://snomed.info/sct',
-                code: obj.snomedConceptId.toString(),
+                code: obj.snomedConceptId?.toString(),
                 display: obj.term,
             },
             {
                 system: 'http://read.info/readv2',
-                code: obj.readCode.toString(),
+                code: obj.readCode?.toString(),
                 display: obj.term,
             },
         ],

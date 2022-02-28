@@ -1,9 +1,4 @@
 import { VON, json } from '../../dto/von.dto'
-import {
-    CodeableConcept,
-    Coding,
-    VonCodedItem,
-} from '../referral-request/types'
 import { codedOutput } from './utilityFn'
 // Each new allergy must be added to a list of allergies
 // If this is the first one, the list must be created
