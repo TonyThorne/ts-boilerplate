@@ -51,7 +51,7 @@ const fieldsToInclude: (keyof Activity)[] = ["Activity Name", "Activity Code"];
 const searchResults = searchActivitiesByKey(objectKey, searchValue);
 const filteredResults = filterFields(searchResults, fieldsToInclude);
 // console.log(searchResults);
-console.log(filteredResults);
+console.log(JSON.stringify(filteredResults));
 // Example usage:
 // const keyword = 'D8002';
 // const results = searchActivities(keyword);

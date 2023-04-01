@@ -61,8 +61,10 @@ const consolidatedObjects: ResultObject[] = inputArray.map(consolidateActivities
 // console.log(consolidatedObjects.length);
 
 // Search for a particular Job Role (by any key), then consolidate the activities so only include the included activities
-const t: ResultObject[] = searchRolesByKey("Job Role Code", "R5110").map(consolidateActivities);
-console.log(t.length);
+// const t: ResultObject[] = searchRolesByKey("Staff Group Code", "S0080").map(consolidateActivities);
+// const t: ResultObject[] = searchRolesByKey("Staff Sub Group Code", "G0450").map(consolidateActivities);
+// const t: ResultObject[] = searchRolesByKey("Job Role Code", "R5105").map(consolidateActivities);
+// console.log(JSON.stringify(t));
 
 // TO-DO These needs to be imported from types file
 type ActivityObject = {
@@ -78,29 +80,26 @@ type ActivityObject = {
     "Rationalisation Status": string;
 };
 
-// Map the consolidated activities to a new array with the activity details
-function findAssociatedActivities(consolidatedObjects: ResultObject[]): ResultObject[] {
-    for (const consolidatedObject of consolidatedObjects) {
-        const associatedActivities: ActivityObject[] = [];
 
-        if (!consolidatedObject.activities) {
-            continue;
-        }
 
-        for (const activityCode of consolidatedObject.activities) {
-            const activityObject = rbacActivities.find(activity => activity["Activity Code"] === activityCode);
+type ResultWithActivities = ResultObject & { associatedActivities: ActivityObject[] };
 
-            if (activityObject) {
-                associatedActivities.push(activityObject);
-            }
-        }
+function findAssociatedActivities(consolidatedObj: ResultObject, activities: ActivityObject[]): any {
+    const associatedActivities = (consolidatedObj.activities as string[]).map((activityCode) => {
+        return activities.find((activity) => activity["Activity Code"] === activityCode);
+    }).filter((activity) => activity !== undefined) as ActivityObject[];
 
-        consolidatedObject.associatedActivities = associatedActivities;
-    }
-
-    return consolidatedObjects;
+    return {
+        ...consolidatedObj,
+        associatedActivities,
+    };
 }
 
-// Example usage:
-const allAssociatedActivities = findAssociatedActivities(t);
-console.log(allAssociatedActivities[0]);
+// const t: ResultObject[] = searchRolesByKey("Job Role Code", "R8000").map(consolidateActivities);
+const t: ResultObject[] = searchRolesByKey("Staff Sub Group Code", "G0450").map(consolidateActivities);
+// const t: ResultObject[] = searchRolesByKey("Staff Group Code", "S0080").map(consolidateActivities);
+
+const associatedActivitiesArray: ResultWithActivities[] = t.map((consolidatedObj) => findAssociatedActivities(consolidatedObj, rbacActivities));
+
+// Example output
+console.log(JSON.stringify(associatedActivitiesArray))
