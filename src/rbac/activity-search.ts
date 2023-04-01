@@ -26,10 +26,12 @@ function searchActivitiesByCode(activityCode: string): Activity[] {
     return data.filter((activity) => activity["Activity Code"].toLowerCase() === activityCode.toLowerCase());
 }
 
+// search by any key
 function searchActivitiesByKey(key: keyof Activity, value: string): Activity[] {
     return data.filter((activity) => activity[key].toLowerCase() === value.toLowerCase());
 }
 
+// limit which fields are returned
 function filterFields<T>(items: T[], fields: (keyof T)[]): Partial<T>[] {
     return items.map((item) => {
         const filteredItem: Partial<T> = {};
@@ -43,8 +45,8 @@ function filterFields<T>(items: T[], fields: (keyof T)[]): Partial<T>[] {
 //Activity Sub Group Code": "C0079",
 // "Activity Group Code": "D8002",
 // Example usage:
-const objectKey: keyof Activity = "Activity Code";
-const searchValue = 'B0825';
+const objectKey: keyof Activity = "Activity Description";
+const searchValue = 'B0428';
 const fieldsToInclude: (keyof Activity)[] = ["Activity Name", "Activity Code"];
 const searchResults = searchActivitiesByKey(objectKey, searchValue);
 const filteredResults = filterFields(searchResults, fieldsToInclude);
