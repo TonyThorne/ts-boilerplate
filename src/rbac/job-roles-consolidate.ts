@@ -48,8 +48,17 @@ function consolidateActivities(obj: InputObject): any {
     return result as ResultObject;
 }
 
+// Enumerated set of types. "Job Role Code", "Staff Sub Group Code", "Staff Group Code"
+type SearchKey = "Job Role Code" | "Staff Sub Group Code" | "Staff Group Code";
+
 // Search Job Roles
-function searchRolesByKey(key: keyof InputObject, value: string): InputObject[] {
+function searchRolesByKey(key: SearchKey, value: string): InputObject[] {
+    if (!key || !value) {
+        throw new Error('Invalid key or value provided.');
+    }
+    if (key !== "Job Role Code" && key !== "Staff Sub Group Code" && key !== "Staff Group Code") {
+        throw new Error('Invalid key provided.');
+    }
     return data.filter((role) => role[key].toLowerCase() === value.toLowerCase());
 }
 
@@ -82,24 +91,37 @@ type ActivityObject = {
 
 
 
+
 type ResultWithActivities = ResultObject & { associatedActivities: ActivityObject[] };
 
-function findAssociatedActivities(consolidatedObj: ResultObject, activities: ActivityObject[]): any {
+function findAssociatedActivities(consolidatedObj: Partial<ResultWithActivities>, activities: ActivityObject[]): ResultWithActivities {
     const associatedActivities = (consolidatedObj.activities as string[]).map((activityCode) => {
-        return activities.find((activity) => activity["Activity Code"] === activityCode);
-    }).filter((activity) => activity !== undefined) as ActivityObject[];
+        const activity = activities.find((activity) => activity["Activity Code"] === activityCode);
+        if (!activity) {
+            // console.error(`Activity not found for code: ${activityCode}`);
+            return null;
+        }
+        return activity;
+    }).filter((activity) => activity !== null) as ActivityObject[];
 
     return {
         ...consolidatedObj,
         associatedActivities,
-    };
+    } as ResultWithActivities;
 }
 
 // const t: ResultObject[] = searchRolesByKey("Job Role Code", "R8000").map(consolidateActivities);
-const t: ResultObject[] = searchRolesByKey("Staff Sub Group Code", "G0450").map(consolidateActivities);
+// const t: ResultObject[] = searchRolesByKey("Staff Sub Group Code", "G0450").map(consolidateActivities);
 // const t: ResultObject[] = searchRolesByKey("Staff Group Code", "S0080").map(consolidateActivities);
 
-const associatedActivitiesArray: ResultWithActivities[] = t.map((consolidatedObj) => findAssociatedActivities(consolidatedObj, rbacActivities));
+// const associatedActivitiesArray: ResultWithActivities[] = t.map((consolidatedObj) => findAssociatedActivities(consolidatedObj, rbacActivities));
 
 // Example output
-console.log(JSON.stringify(associatedActivitiesArray))
+// console.log(JSON.stringify(associatedActivitiesArray))
+try {
+    const t: ResultObject[] = searchRolesByKey("Staff Sub Group Code", "G0450").map(consolidateActivities);
+    const associatedActivitiesArray: ResultWithActivities[] = t.map((consolidatedObj) => findAssociatedActivities(consolidatedObj, rbacActivities));
+    console.log(JSON.stringify(associatedActivitiesArray));
+} catch (error) {
+    console.error('An error occurred:', error.message);
+}
