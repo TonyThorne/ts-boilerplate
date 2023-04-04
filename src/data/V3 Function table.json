@@ -1,0 +1,538 @@
+[
+    {
+        "entity_id": 1,
+        "code": 200000000000000,
+        "description": "Consultation Manager"
+    },
+    {
+        "entity_id": 2,
+        "code": 400000000000000,
+        "description": "Registration"
+    },
+    {
+        "entity_id": 3,
+        "code": 900000000000000,
+        "description": "Search and Reports"
+    },
+    {
+        "entity_id": 4,
+        "code": 600000000000000,
+        "description": "Bulk Recalls"
+    },
+    {
+        "entity_id": 5,
+        "code": 500000000000000,
+        "description": "Registration Links"
+    },
+    {
+        "entity_id": 6,
+        "code": 800000000000000,
+        "description": "Appointments"
+    },
+    {
+        "entity_id": 7,
+        "code": 700000000000000,
+        "description": "File Maintenance"
+    },
+    {
+        "entity_id": 8,
+        "code": 1000000000000000,
+        "description": "Mail Administrator"
+    },
+    {
+        "entity_id": 9,
+        "code": 1100000000000000,
+        "description": "Patient Groups"
+    },
+    {
+        "entity_id": 10,
+        "code": 1601000000000000,
+        "description": "Populate Problems"
+    },
+    {
+        "entity_id": 11,
+        "code": 1400000000000000,
+        "description": "Items Of Service"
+    },
+    {
+        "entity_id": 12,
+        "code": 1500000000000000,
+        "description": "GP Communicator"
+    },
+    {
+        "entity_id": 14,
+        "code": 1200000000000000,
+        "description": "CPRD Data Collection"
+    },
+    {
+        "entity_id": 15,
+        "code": 1602000000000000,
+        "description": "Drug Dictionary Utilities"
+    },
+    {
+        "entity_id": 16,
+        "code": 1603000000000000,
+        "description": "Populate Read Formulary"
+    },
+    {
+        "entity_id": 17,
+        "code": 300000000000000,
+        "description": "Clinical Audit"
+    },
+    {
+        "entity_id": 18,
+        "code": 100000000000000,
+        "description": "Security Module"
+    },
+    {
+        "entity_id": 20,
+        "code": 1700000000000000,
+        "description": "Multilex Upgrade Report"
+    },
+    {
+        "entity_id": 22,
+        "code": 1800000000000000,
+        "description": "Mail Box"
+    },
+    {
+        "entity_id": 23,
+        "code": 1900000000000000,
+        "description": "Event Log"
+    },
+    {
+        "entity_id": 24,
+        "code": 1604000000000000,
+        "description": "BRU Weekly report"
+    },
+    {
+        "entity_id": 25,
+        "code": 1605000000000000,
+        "description": "OXMIS - Read retrofit utility"
+    },
+    {
+        "entity_id": 26,
+        "code": 2000000000000000,
+        "description": "Miquest"
+    },
+    {
+        "entity_id": 29,
+        "code": 2100000000000000,
+        "description": "Audit Report"
+    },
+    {
+        "entity_id": 32,
+        "code": 1300000000000000,
+        "description": "THIN Data Collection"
+    },
+    {
+        "entity_id": 33,
+        "code": 9800000000000000,
+        "description": "Pocket Vision"
+    },
+    {
+        "entity_id": 34,
+        "code": 2200000000000000,
+        "description": "Mail Manager"
+    },
+    {
+        "entity_id": 35,
+        "code": 2300000000000000,
+        "description": "Mail Maintenance"
+    },
+    {
+        "entity_id": 36,
+        "code": 2400000000000000,
+        "description": "Control Panel"
+    },
+    {
+        "entity_id": 38,
+        "code": 2700000000000000,
+        "description": "National Summary Initial Upload"
+    },
+    {
+        "entity_id": 39,
+        "code": 2500000000000000,
+        "description": "Palliative Care Reports"
+    },
+    {
+        "entity_id": 40,
+        "code": 1606000000000000,
+        "description": "Populate CMS Suitability"
+    },
+    {
+        "entity_id": 41,
+        "code": 2600000000000000,
+        "description": "CMS Message Collector"
+    },
+    {
+        "entity_id": 43,
+        "code": 2800000000000000,
+        "description": "Daybook"
+    },
+    {
+        "entity_id": 44,
+        "code": 1607000000000000,
+        "description": "Priority Update"
+    },
+    {
+        "entity_id": 128,
+        "code": 201010000000000,
+        "description": "Lock Patient (Update Data)"
+    },
+    {
+        "entity_id": 129,
+        "code": 201010000000000,
+        "description": "Delete Data"
+    },
+    {
+        "entity_id": 130,
+        "code": 201010000000000,
+        "description": "Edit Data"
+    },
+    {
+        "entity_id": 131,
+        "code": 201010000000000,
+        "description": "Start Consultation (Add Data)"
+    },
+    {
+        "entity_id": 132,
+        "code": 201010000000000,
+        "description": "Add Acute Script"
+    },
+    {
+        "entity_id": 133,
+        "code": 201010000000000,
+        "description": "Add Repeat Master"
+    },
+    {
+        "entity_id": 134,
+        "code": 201010000000000,
+        "description": "Re-Authorise Repeat Master"
+    },
+    {
+        "entity_id": 135,
+        "code": 201010000000000,
+        "description": "Re-Print Therapy"
+    },
+    {
+        "entity_id": 136,
+        "code": 201010000000000,
+        "description": "Issues Repeat Masters"
+    },
+    {
+        "entity_id": 137,
+        "code": 301010000000000,
+        "description": "View patients"
+    },
+    {
+        "entity_id": 138,
+        "code": 301020000000000,
+        "description": "Generate statistics"
+    },
+    {
+        "entity_id": 139,
+        "code": 301020000000000,
+        "description": "Advanced Generation options"
+    },
+    {
+        "entity_id": 140,
+        "code": 401010000000000,
+        "description": "Update Patient records"
+    },
+    {
+        "entity_id": 141,
+        "code": 401020000000000,
+        "description": "Security Controlled Transactions"
+    },
+    {
+        "entity_id": 142,
+        "code": 701000000000000,
+        "description": "Maintain Organisations/departments/people"
+    },
+    {
+        "entity_id": 143,
+        "code": 702000000000000,
+        "description": "Maintain Staff"
+    },
+    {
+        "entity_id": 144,
+        "code": 703000000000000,
+        "description": "Maintain Practice"
+    },
+    {
+        "entity_id": 145,
+        "code": 201010000000000,
+        "description": "Delete Item From Problem Group"
+    },
+    {
+        "entity_id": 146,
+        "code": 1600000000000000,
+        "description": "Vision Utilities"
+    },
+    {
+        "entity_id": 147,
+        "code": 201000000000000,
+        "description": "Read Only"
+    },
+    {
+        "entity_id": 148,
+        "code": 301000000000000,
+        "description": "View statistics"
+    },
+    {
+        "entity_id": 149,
+        "code": 401000000000000,
+        "description": "Read Only"
+    },
+    {
+        "entity_id": 152,
+        "code": 1201000000000000,
+        "description": "Start Collection"
+    },
+    {
+        "entity_id": 153,
+        "code": 1201010000000000,
+        "description": "Change user ID"
+    },
+    {
+        "entity_id": 154,
+        "code": 1201020000000000,
+        "description": "Change audit sequence range"
+    },
+    {
+        "entity_id": 155,
+        "code": 9900000000000000,
+        "description": "Global"
+    },
+    {
+        "entity_id": 156,
+        "code": 9901000000000000,
+        "description": "Access to Archived Data"
+    },
+    {
+        "entity_id": 157,
+        "code": 9902000000000000,
+        "description": "Access to Archived Staff"
+    },
+    {
+        "entity_id": 158,
+        "code": 9903000000000000,
+        "description": "Access to Archived Patients"
+    },
+    {
+        "entity_id": 159,
+        "code": 2001010000000000,
+        "description": "Data Collection Agreement Maintenance"
+    },
+    {
+        "entity_id": 160,
+        "code": 501010000000000,
+        "description": "Security Controlled Actions"
+    },
+    {
+        "entity_id": 161,
+        "code": 2001000000000000,
+        "description": "Queries"
+    },
+    {
+        "entity_id": 162,
+        "code": 501000000000000,
+        "description": "Standard Actions"
+    },
+    {
+        "entity_id": 163,
+        "code": 201020000000000,
+        "description": "View Pathology"
+    },
+    {
+        "entity_id": 164,
+        "code": 1301000000000000,
+        "description": "Start Collection"
+    },
+    {
+        "entity_id": 165,
+        "code": 1301010000000000,
+        "description": "Change user ID"
+    },
+    {
+        "entity_id": 166,
+        "code": 1301020000000000,
+        "description": "Change audit sequence range"
+    },
+    {
+        "entity_id": 167,
+        "code": 201010000000000,
+        "description": "Choose and Book Referrals"
+    },
+    {
+        "entity_id": 168,
+        "code": 801000000000000,
+        "description": "Restricted Access"
+    },
+    {
+        "entity_id": 169,
+        "code": 801010000000000,
+        "description": "Full Access"
+    },
+    {
+        "entity_id": 170,
+        "code": 401010000000000,
+        "description": "Change Spine Sharing Consent"
+    },
+    {
+        "entity_id": 171,
+        "code": 9904000000000000,
+        "description": "RBAC"
+    },
+    {
+        "entity_id": 172,
+        "code": 9904010000000000,
+        "description": "Prescribing"
+    },
+    {
+        "entity_id": 173,
+        "code": 9904010000000000,
+        "description": "Print Prescriptions"
+    },
+    {
+        "entity_id": 174,
+        "code": 9904010000000000,
+        "description": "Edit Prescriptions"
+    },
+    {
+        "entity_id": 175,
+        "code": 9904010000000000,
+        "description": "Cancel Prescriptions"
+    },
+    {
+        "entity_id": 176,
+        "VAC": 12323
+        "code": 9904010000000000,
+        "description": "Sign Prescriptions"
+    },
+    {
+        "entity_id": 177,
+        "code": 9904010000000000,
+        "description": "Independent Prescribing"
+    },
+    {
+        "entity_id": 178,
+        "code": 9904010000000000,
+        "description": "Supplementary Prescribing"
+    },
+    {
+        "entity_id": 179,
+        "code": 9904010000000000,
+        "description": "NPF Prescribing"
+    },
+    {
+        "entity_id": 180,
+        "code": 201030000000000,
+        "description": "Add/Edit Patient Warnings"
+    },
+    {
+        "entity_id": 181,
+        "code": 401010000000000,
+        "description": "Add Sensitive records"
+    },
+    {
+        "entity_id": 182,
+        "code": 401030000000000,
+        "description": "Merge Patients"
+    },
+    {
+        "entity_id": 183,
+        "code": 201010000000000,
+        "description": "Choose and Book Referrals - by proxy"
+    },
+    {
+        "entity_id": 184,
+        "code": 9905010000000000,
+        "description": "Configure Reprint Reason"
+    },
+    {
+        "entity_id": 185,
+        "code": 9905010000000000,
+        "description": "Configure Repeat Inactivation/Reactivation Reason"
+    },
+    {
+        "entity_id": 186,
+        "code": 9905000000000000,
+        "description": "Configuration"
+    },
+    {
+        "entity_id": 187,
+        "code": 9905010000000000,
+        "description": "Patient record"
+    },
+    {
+        "entity_id": 188,
+        "code": 2801000000000000,
+        "description": "Create Task"
+    },
+    {
+        "entity_id": 189,
+        "code": 2801010000000000,
+        "description": "Complete Task"
+    },
+    {
+        "entity_id": 190,
+        "code": 401040000000000,
+        "description": "Transfer Patients"
+    },
+    {
+        "entity_id": 191,
+        "code": 9905020000000000,
+        "description": "Advanced Settings"
+    },
+    {
+        "entity_id": 192,
+        "code": 9905020000000000,
+        "description": "Enable / Disable GP Summary"
+    },
+    {
+        "entity_id": 193,
+        "code": 9906000000000000,
+        "description": "SCR"
+    },
+    {
+        "entity_id": 194,
+        "code": 9906010000000000,
+        "description": "Emergency Access"
+    },
+    {
+        "entity_id": 195,
+        "code": 9906020000000000,
+        "description": "Legal Access"
+    },
+    {
+        "entity_id": 196,
+        "code": 9906030000000000,
+        "description": "Withdraw"
+    },
+    {
+        "entity_id": 197,
+        "code": 2900000000000000,
+        "description": "SCR Viewer"
+    },
+    {
+        "entity_id": 198,
+        "code": 3000000000000000,
+        "description": "Queued GP Summaries"
+    },
+    {
+        "entity_id": 199,
+        "code": 3100000000000000,
+        "description": "Other Reports"
+    },
+    {
+        "entity_id": 200,
+        "code": 3200000000000000,
+        "description": "GP Summary Bulk Uploads"
+    },
+    {
+        "entity_id": 201,
+        "code": 202000000000000,
+        "description": "Show Deleted Records"
+    }
+]
